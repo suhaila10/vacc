@@ -93,7 +93,6 @@ public class citizen {
 	//tpString
 	@Override
 	public String toString() {
-		return "\n"+"citizen [name=" + name + ", ic=" + ic + ", state=" + state + ", age=" + age + ", category=" + category
-				+ ", firstdose=" + firstdose + ", seconddose=" + seconddose + ", vaccompletion=" + vaccompletion + "]";
+		return String.format("\t | %32s | %12s | %35s | %5s | %10s | %17s | %18s | %19s | %n" , name , ic , state , age ,  category , firstdose , seconddose , vaccompletion);
 	}
 }
