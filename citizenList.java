@@ -51,9 +51,9 @@ public class citizenList {
 		  Queue<citizen> completedList = new LinkedList<>();	  
 		  
 		  //
-		  for(int i=0; i<citizenList.size(); i++)
+		 /* while (!citizenList.isEmpty())
 	      {
-	        	Citizen = citizenList.get(i);
+	        	Citizen = citizenList.removeLast();
 	        	
 	        	if (Citizen.getAge() >= 18 && Citizen.getAge() <= 30) 
 	            {
@@ -67,7 +67,7 @@ public class citizenList {
 	            {
 	                stCenter3.push(Citizen);
 	            }
-	        }
+	        } */
 		  
 		  //welcome page
 		  JOptionPane.showMessageDialog(null,"LET'S GET YOUR VACCINE! :)","WELCOME PAGE", JOptionPane.INFORMATION_MESSAGE);
@@ -96,14 +96,7 @@ public class citizenList {
 
                 Citizen = new citizen(name,IC,state,age,category,firstdose,secdose,vaccompletion);
                 //create object
-                citizenList.add(Citizen);
-                
-                //display citizen's information you update
-                for (int i = 0; i<citizenList.size(); i++)
-                {
-                    System.out.println(citizenList.get(i));
-                }
-
+                citizenList.addFirst(Citizen);
             }
             
             else if (menu ==2) //remove citizen
@@ -113,25 +106,34 @@ public class citizenList {
 	             //ask user to input correct IC number if they enter the wrong IC number
 	             while (ic.length()!=12)
 	             {
-	            	 JOptionPane.showMessageDialog(null,"PLEASE ENTER THE CORRECT IC NUMBER");
+	            	 JOptionPane.showMessageDialog(null,"PLEASE ENTER THE CORRECT IC NUMBER!!!");
 	            	 ic = JOptionPane.showInputDialog("Enter the IC's number that you want to remove");
 	             }
-	             for (int i = 0; i<citizenList.size(); i++)
-	             {
-	                 Citizen = citizenList.get(i);//retrieve object
-	                 if (Citizen.getIc().equalsIgnoreCase(ic))
-	                 {
-	                     citizenList.remove(Citizen); //remove object
-	                     
-	                 }
-	                 
-	             } 
 	    		 
 	    	 }
             
 			else if (menu == 3) //update first dose status
 			{
-				while (!stCenter1.isEmpty()) //put into stack
+				//put into stack
+				while (!citizenList.isEmpty())
+			      {
+			        	Citizen = citizenList.removeLast();
+			        	
+			        	if (Citizen.getAge() >= 18 && Citizen.getAge() <= 30) 
+			            {
+			                stCenter1.push(Citizen);
+			            } 
+			            else if (Citizen.getAge() >= 31 && Citizen.getAge() <= 49) 
+			            {
+			                stCenter2.push(Citizen);
+			            } 
+			            else if (Citizen.getAge() >= 50)
+			            {
+			                stCenter3.push(Citizen);
+			            }
+			        }
+				  
+				while (!stCenter1.isEmpty()) //put into stack1
 				{
 					Citizen = stCenter1.pop();
                     Citizen.setFirstdose("complete");
