@@ -81,9 +81,15 @@ public class citizenList {
             {
                 String name = JOptionPane.showInputDialog("Enter the citizen's name: ");
                 String IC = JOptionPane.showInputDialog("Enter the citizen's IC: ");
+              //ask user to input correct IC number if they enter the wrong IC number
+                while (IC.length()!=12) 
+	             {
+	            	 JOptionPane.showMessageDialog(null,"PLEASE ENTER THE CORRECT IC NUMBER");
+	            	 IC = JOptionPane.showInputDialog("Enter the IC's number that you want to remove");
+	             }
                 String state = JOptionPane.showInputDialog("Enter the citizen's state:");
                 int age = Integer.parseInt(JOptionPane.showInputDialog("Enter the citizen's age: "));
-                String category = JOptionPane.showInputDialog("Enter the citizen's category:");
+                String category = JOptionPane.showInputDialog("Enter the citizen's category(LOW RISK/HIGH RISK):");
                 String firstdose = null;
                 String secdose = null;
                 String vaccompletion = null;
@@ -91,6 +97,12 @@ public class citizenList {
                 Citizen = new citizen(name,IC,state,age,category,firstdose,secdose,vaccompletion);
                 //create object
                 citizenList.add(Citizen);
+                
+                //display citizen's information you update
+                for (int i = 0; i<citizenList.size(); i++)
+                {
+                    System.out.println(citizenList.get(i));
+                }
 
             }
             
@@ -98,6 +110,12 @@ public class citizenList {
 			{
 	    		//ask user to enter the IC's number of the people they want to delete
 	             String ic = JOptionPane.showInputDialog("Enter the IC's number that you want to remove");
+	             //ask user to input correct IC number if they enter the wrong IC number
+	             while (ic.length()!=12)
+	             {
+	            	 JOptionPane.showMessageDialog(null,"PLEASE ENTER THE CORRECT IC NUMBER");
+	            	 ic = JOptionPane.showInputDialog("Enter the IC's number that you want to remove");
+	             }
 	             for (int i = 0; i<citizenList.size(); i++)
 	             {
 	                 Citizen = citizenList.get(i);//retrieve object
