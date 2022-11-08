@@ -50,25 +50,6 @@ public class citizenList {
 		  Queue<citizen> qCenter3 = new LinkedList<>();
 		  Queue<citizen> completedList = new LinkedList<>();	  
 		  
-		  //
-		 /* while (!citizenList.isEmpty())
-	      {
-	        	Citizen = citizenList.removeLast();
-	        	
-	        	if (Citizen.getAge() >= 18 && Citizen.getAge() <= 30) 
-	            {
-	                stCenter1.push(Citizen);
-	            } 
-	            else if (Citizen.getAge() >= 31 && Citizen.getAge() <= 49) 
-	            {
-	                stCenter2.push(Citizen);
-	            } 
-	            else if (Citizen.getAge() >= 50)
-	            {
-	                stCenter3.push(Citizen);
-	            }
-	        } */
-		  
 		  //welcome page
 		  JOptionPane.showMessageDialog(null,"LET'S GET YOUR VACCINE! :)","WELCOME PAGE", JOptionPane.INFORMATION_MESSAGE);
 
@@ -109,7 +90,15 @@ public class citizenList {
 	            	 JOptionPane.showMessageDialog(null,"PLEASE ENTER THE CORRECT IC NUMBER!!!");
 	            	 ic = JOptionPane.showInputDialog("Enter the IC's number that you want to remove");
 	             }
-	    		 
+	             for (int i = 0; i<citizenList.size(); i++)
+	             {
+	                 Citizen = citizenList.get(i);//retrieve object
+	                 if (Citizen.getIc().equalsIgnoreCase(ic))
+	                 {
+	                     citizenList.remove(Citizen); //remove object
+	                 }
+	             }
+
 	    	 }
             
 			else if (menu == 3) //update first dose status
@@ -133,7 +122,7 @@ public class citizenList {
 			            }
 			        }
 				  
-				while (!stCenter1.isEmpty()) //put into stack1
+				while (!stCenter1.isEmpty()) //put into stCenter1
 				{
 					Citizen = stCenter1.pop();
                     Citizen.setFirstdose("complete");
@@ -141,39 +130,39 @@ public class citizenList {
 					qCenter1.add(Citizen);
 				}
 				System.out.println("\t\t\t\t\t\t\t\t\t\t\tstCenter 1 after first dose");
-				System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
-                System.out.println(String.format("\t | %32s | %12s | %35s | %5s | %10s | %11s | %18s | %16s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
-                System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
+				System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
+                System.out.println(String.format("\t | %27s | %12s | %35s | %5s | %10s | %11s | %18s | %16s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
+                System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
 			    System.out.println(temp); //after first dose
-			    System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
+			    System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
 				
-				while (!stCenter2.isEmpty())
+				while (!stCenter2.isEmpty()) //put into stCenter2
 				{
 					Citizen = stCenter2.pop();
 					Citizen.setFirstdose("complete");
 					temp2.push(Citizen);
 					qCenter2.add(Citizen);
 				}
-				System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tstCenter 2 after first dose");
-				System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
-                System.out.println(String.format("\t | %32s | %12s | %35s | %5s | %10s | %11s | %18s | %16s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
-                System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
-			    System.out.println(temp2); //display stCenter2
-			    System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
+				System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\tstCenter 2 after first dose");
+				System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
+                System.out.println(String.format("\t | %27s | %12s | %35s | %5s | %10s | %11s | %18s | %16s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
+                System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
+			    System.out.println(temp2); //after first dose
+			    System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
 				
-				while (!stCenter3.isEmpty())
+				while (!stCenter3.isEmpty()) //put into stCenter3
 				{
 					Citizen = stCenter3.pop();
 					Citizen.setFirstdose("complete");
 					temp3.push(Citizen);
 					qCenter3.add(Citizen);
 				}
-				System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tstCenter 3 after first dose");
-				System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
-                System.out.println(String.format("\t | %32s | %12s | %35s | %5s | %10s | %11s | %18s | %16s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
-                System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
-			    System.out.println(temp3); //display stCenter3
-			    System.out.println("\t _____________________________________________________________________________________________________________________________________________________________________________");
+				System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\tstCenter 3 after first dose");
+				System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
+                System.out.println(String.format("\t | %27s | %12s | %35s | %5s | %10s | %11s | %18s | %16s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
+                System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
+			    System.out.println(temp3); //after first dose
+			    System.out.println("\t ________________________________________________________________________________________________________________________________________________________________________");
 			}
             
 			else if (menu ==4) //update second dose status
@@ -214,11 +203,11 @@ public class citizenList {
 					{
 						System.out.println("\n \n \n");
 						System.out.println("\t\t\t\t\t\t\t\t\t\tSECOND DOSE IS UPDATED");
-						System.out.println("\t __________________________________________________________________________________________________________________________________________________________________________________________");
-		                System.out.println(String.format("\t | %32s | %12s | %35s | %5s | %10s | %11s | %18s | %34s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
-		                System.out.println("\t ____________________________________________________________________________________________________________________________________________________________________________________________");
-					    System.out.println(completedList); //display all queue
-					    System.out.println("\t ____________________________________________________________________________________________________________________________________________________________________________________________");
+						System.out.println("\t _______________________________________________________________________________________________________________________________________________________________________________________");
+		                System.out.println(String.format("\t | %27s | %12s | %35s | %5s | %10s | %11s | %18s | %34s |", "Name", "IC Number", "State", "Age", "Category", "First Dose Status", "Second Dose Status", "Vaccine Certificate"));
+		                System.out.println("\t _______________________________________________________________________________________________________________________________________________________________________________________");
+					    System.out.println(completedList); //second dose
+					    System.out.println("\t _______________________________________________________________________________________________________________________________________________________________________________________");
 					}
 				} while (submenu != 3);
 			}
